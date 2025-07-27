@@ -1,0 +1,367 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100dvh;
+    background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.2rem;
+    color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.headOutline {
+    width: 430px;
+    height: 160px;
+    background-color: #0d0d0d;
+    border-radius: 10px;
+    position: relative;
+    animation: glowing 1.5s infinite alternate;
+}
+
+/* Pseudo elementos para crear el efecto de los bordes multicolor */
+.headOutline::after, .headOutline::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-image: conic-gradient(#ff4545, #00ff99, #006aff, #ff0095);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 5px;
+}
+
+.headOutline::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+/* Titulos */
+h1 {
+    font-size: 4.5rem;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 5px #0ff, 0 0 40px #0ff;
+    animation: fadeInUp 2s ease-out;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+    animation: fadeInDown 2s ease-out;
+}
+
+h3 {
+    font-size: 4rem;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff;
+}
+
+/* Burger Button */
+.burger-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: transparent;
+    border: none;
+    width: 35px;
+    height: 25px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.burger-button .line {
+    background-color: #0ff;
+    height: 5px;
+    width: 100%;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+.burger-button:hover .line {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8),
+                0 0 30px rgba(0, 255, 255, 0.7),
+                0 0 60px rgba(0, 255, 255, 0.6);
+    background-color: rgba(0, 255, 255, 1);
+}
+
+.burger-button:active {
+    transform: scale(0.80);
+}
+
+/* Navegacion */
+nav {
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed;
+    top: -100%;
+    right: 10px;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.display-nav {
+    top: 0;
+}
+
+nav a {
+    padding: 20px 0;
+}
+
+nav a:first-child {
+    border-top: solid 1px #0ff;
+    margin-top: 20px;
+}
+
+/* Estilizacion contenido central */
+main, section {
+    width: 90%;
+    max-width: 1200px;
+    background: linear-gradient(to bottom, #222, #111);
+    border: 3px solid #444;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 2% 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Estilizacion contenedor */
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: #181818;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,255,255,0.1);
+}
+
+.about .contenedor {
+    justify-content: center;
+    align-items: center;
+    padding: 5% 10%;
+}
+
+/* Explicacion de proyectos */
+.explicacion {
+    flex: 1 1 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.explicacion p {
+    line-height: 1.6;
+    color: aquamarine;
+}
+
+/* Previews */
+.preview {
+    flex: 1 1 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilizacion de imagenes */
+img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0,255,255,0.2);
+}
+
+/* Links */
+a {
+    color: #0ff;
+    text-decoration: none;
+    position: relative; /* Para los pseudo elementos */
+    transition: color 0.3s ease;
+}
+
+/* Crea una barra bajo el vinculo, con su misma anchura, que al principio no es visible */
+a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #0ff;
+    bottom: -3px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-in-out;
+}
+
+a:hover {
+    color: #00ff99;
+}
+
+/* Accion para animar la barra bajo los vinculos */
+a:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Footer */
+footer .contenedor {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8),
+                    0 0 30px rgba(0, 255, 255, 0.7),
+                    0 0 60px rgba(0, 255, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(255, 0, 255, 0.8),
+                    0 0 50px rgba(255, 0, 255, 0.7),
+                    0 0 100px rgba(255, 0, 255, 0.6);
+    }
+}
+
+@keyframes glowingButton {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 125, 125, 0.8),
+                    0 0 30px rgba(0, 125, 125, 0.7),
+                    0 0 60px rgba(0, 125, 125, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.8),
+                    0 0 30px rgba(0, 255, 255, 0.7),
+                    0 0 60px rgba(0, 255, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 125, 125, 0.8),
+                    0 0 30px rgba(0, 125, 125, 0.7),
+                    0 0 60px rgba(0, 125, 125, 0.6);
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    body {
+        font-size: 1.1rem;
+    }
+
+    .headOutline {
+        width: 90dvw;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 3rem;
+    }
+}
+
+/* Telefonos */
+@media (max-width: 768px) {
+    body {
+        font-size: 1rem;
+    }
+
+    .headOutline {
+        width: 90dvw;
+        height: auto;
+    }
+
+    .about, .contenedor, main, footer {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h3 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    .headOutline {
+        width: 90dvw;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+}

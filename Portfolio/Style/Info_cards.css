@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100dvh;
+    font-family: sans-serif;
+    background-color: #346d01;
+}
+
+/* Boton */
+.flipper {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, transform 0.1s;
+    margin-bottom: 12px;
+    position: absolute;
+    top: -40px;
+    left: 0;
+}
+
+/* Para resaltar el boton */
+.flipper:hover {
+    background-color: #45a049;
+}
+
+.flipper:active {
+    transform: scale(0.80);
+}
+
+/* Divs */
+
+.main {
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container {
+    height: 70%;
+    width: calc(85% / 4);
+    perspective: 2000px;
+    position: relative;
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px;
+    transform-style: preserve-3d;
+    transition: 1s;
+    position: relative;
+}
+
+.name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Para hacer aparecer el titulo */
+.container:hover .name,
+.card:hover .name,
+.front:hover .name {
+    opacity: 1;
+}
+
+.flipped {
+    transform: rotateY(-180deg);
+}
+
+
+.front {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.back {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    position: absolute;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.info {
+    height: 40%;
+    width: 90%;
+    border: solid 1px green;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Divs contenido individual */
+
+.lucanus {
+    background-image: url(../img/Escarabajos/lucanus_cervus.webp);
+    background-position: -500px 0;
+}
+
+.lucanus-back {
+    background-image: url(../img/Escarabajos/lucanus.jpg);
+    background-position: center;
+}
+
+.potato {
+    background-image: url(../img/Escarabajos/escarabajo_patata.webp);
+    background-position: -295px;
+}
+
+.potato-back {
+    background-image: url(../img/Escarabajos/potato.jpg);
+    background-position: center;
+}
+
+.tiger {
+    background-image: url(../img/Escarabajos/escarabajo_tigre.webp);
+    background-position: -350px;
+}
+
+.tiger-back {
+    background-image: url(../img/Escarabajos/tiger.jpg);
+    background-position: center;
+}
+
+.rhino {
+    background-image: url(../img/Escarabajos/escarabajo_rinoceronte.webp);
+    background-position: center;
+}
+
+.rhino-back {
+    background-image: url(../img/Escarabajos/rhino.jpg);
+    background-position: center;
+}
+
+
+@media screen and (max-width: 1100px), screen and (orientation: portrait) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        width: 90%;
+        height: calc(90% / 4);
+        margin: 50px 0;
+    }
+
+    .name {
+        font-size: 0.9rem;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 1;
+        width: auto;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .info {
+        height: 100%;
+        width: 100%;
+        font-size: 0.7rem;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .lucanus {
+        background-image: url(../img/Escarabajos/lucanus_horizontal.webp);
+        background-position: 0 42%;
+    }
+
+    .potato {
+        background-position: center;
+    }
+
+    .tiger {
+        background-position: center;
+    }
+
+    .rhino {
+        background-image: url(../img/Escarabajos/rhino_horizontal.webp);
+        background-position: center;
+    }
+
+    .lucanus-back, .potato-back,
+    .tiger-back, .rhino-back {
+        background-image: none;
+        background-color: rgb(65, 255, 106);
+    }
+}
